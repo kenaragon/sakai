@@ -2081,6 +2081,9 @@ public class SiteAction extends PagedResourceActionII {
 			// Will have the choice to active/inactive user or not
 			context.put("activeInactiveUser", ServerConfigurationService.getBoolean("activeInactiveUser", false));
 
+			context.put("showEnrollmentStatus", ServerConfigurationService.getBoolean(
+				"sitemanage.manageParticipants.showEnrollmentStatus", false));
+
 			// Provide last modified time
 			realmId = SiteService.siteReference(site.getId());
 			try {
@@ -12907,6 +12910,8 @@ private Map<String, List<MyTool>> getTools(SessionState state, String type, Site
 							String attributeInput = StringUtils.trimToNull(params.getString(attribute + "_" + id));
 							if (attributeInput != null)
 							{
+								
+								attributeInput = formattedText.sanitizeHrefURL(attributeInput);
 								// save the attribute input if valid, otherwise generate alert
 								if ( formattedText.validateURL(attributeInput) )
 									attributes.put(attribute, attributeInput);

@@ -436,6 +436,7 @@
   }
   .removeTool {
     text-decoration: none !important;
+    color: var(--errorBanner-color);
   }
   #alertBox {
     background: var(--errorBanner-bgcolor);
@@ -676,6 +677,10 @@
         margin-right: 0;  // Removing margin-right from previous breakpoint
       }
     }
+  }
+
+  .enrollment-status {
+      font-size: $default-font-size-small;
   }
 
   i.icon-sakai--pdf {
